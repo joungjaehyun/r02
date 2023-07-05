@@ -1,8 +1,11 @@
-import TestLayout from "../layouts/TestLayout";
+import BasicLayout from "../layouts/BasicLayout";
+
 
 const AboutPage = () => {
+
+    console.log("about go")
     return ( 
-        <TestLayout>About Page</TestLayout>
+        <BasicLayout> About Page</BasicLayout>
      );
 }
  

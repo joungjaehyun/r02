@@ -1,10 +1,12 @@
-import TestLayout from "../layouts/TestLayout"
+import BasicLayout from "../layouts/BasicLayout";
+
 
 
 const MainPage = () => {
 
+    console.log("main go")
     return (
-        <TestLayout>Main Page</TestLayout>
+          <BasicLayout>Main Page</BasicLayout>
       );
 }
  
