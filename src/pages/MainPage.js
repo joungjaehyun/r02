@@ -1,7 +1,11 @@
+import TestLayout from "../layouts/TestLayout"
+
+
 const MainPage = () => {
-    return (  
-        <div>Main Page</div>
-    );
+
+    return (
+        <TestLayout>Main Page</TestLayout>
+      );
 }
  
 export default MainPage;

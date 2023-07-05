@@ -1,6 +1,8 @@
+import TestLayout from "../layouts/TestLayout";
+
 const AboutPage = () => {
     return ( 
-        <div>About Page</div>
+        <TestLayout>About Page</TestLayout>
      );
 }
  
