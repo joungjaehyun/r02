@@ -1,4 +1,4 @@
-import BasicLayout from "../../layouts/BasicLayout";
+
 
 
 
@@ -6,9 +6,9 @@ import BasicLayout from "../../layouts/BasicLayout";
 const ListPage = () => {
     console.log("Board List go")
     return ( 
-        <BasicLayout>
+            <div>
             Board List Page
-        </BasicLayout>
+            </div>
      );
 }
  
