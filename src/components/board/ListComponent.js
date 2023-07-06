@@ -41,7 +41,7 @@ const ListComponent = ({queryObj,movePage}) => {
         <div>
             <div>List Component</div>
             <div>
-                <ul>
+                <ul >
                     {listData.dtoList.map(
                      ({bno,title,replyCount})   => <li key={bno}>{bno} - {title}
                     - [{replyCount}]</li>)}

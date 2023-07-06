@@ -51,7 +51,7 @@ const ListPage = () => {
     return (
         <div>
             {/* queryobj를 전달 해준다.  */}
-            Board List Page
+            Board List
             <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
         </div>
     );
