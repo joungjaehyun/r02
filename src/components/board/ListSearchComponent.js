@@ -47,14 +47,14 @@ const ListSearchComponent = ({ queryObj, moveSearch, changeSize }) => {
                 className="border-2 m-2 p-2"
                 onClick={e => moveSearch(searchObj.type, searchObj.keyword)}
             >SEARCH</button>
-            
+
             <select className="boarder-1 m-2 p-2"
                 value={chSize.size}
                 onChange={e => {
                     chSize.size = e.target.value
                     setChSize({ ...chSize})
-                } 
-            }
+                    
+                }}
             >
                 <option value={5}>5</option>
                 <option value={10}>10</option>

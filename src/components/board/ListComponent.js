@@ -20,7 +20,7 @@ const initState = {
 }
 
 
-const ListComponent = ({queryObj,movePage}) => {
+const ListComponent = ({queryObj,movePage, moveRead}) => {
     // rendering시 에러방지
     const [listData, setListData] = useState(initState)
 
@@ -44,7 +44,9 @@ const ListComponent = ({queryObj,movePage}) => {
             <div>
                 <ul >
                     {listData.dtoList.map(
-                     ({bno,title,replyCount})   => <li key={bno}>{bno} - {title}
+                     ({bno,title,replyCount})   => <li key={bno}
+                     onClick={()=> moveRead(bno)}
+                     >{bno} - {title}
                     - [{replyCount}]</li>)}
                 </ul>
             </div>

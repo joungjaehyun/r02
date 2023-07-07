@@ -1,8 +1,6 @@
-import { useSearchParams } from "react-router-dom";
+import { createSearchParams, useNavigate, useSearchParams } from "react-router-dom";
 import ListComponent from "../../components/board/ListComponent";
 import ListSearchComponent from "../../components/board/ListSearchComponent";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
-
 
 const checkNull = (obj) => {
 
@@ -26,6 +24,9 @@ const ListPage = () => {
 
     // Query String 처리
     const [search, setSearch] = useSearchParams()
+
+    const navigate = useNavigate()
+
 
     console.log(search)
     // page size 값은 없다면 초기값 설정
@@ -57,12 +58,24 @@ const ListPage = () => {
 
         setSearch({ ...queryObj })
     }
+
+    const moveRead = (bno)=>{
+
+        console.log("moveRead: " + bno)
+
+        const queryString = createSearchParams(queryObj).toString()
+        
+        navigate(`/board/read/${bno}?${queryString}`)
+    }
+
     const chageSize = (size) =>{
-    
+        queryObj.page = 1 
         queryObj.size = size
 
         setSearch({...queryObj})
     }
+
+
 
     console.log("SearchComponent----------------------------")
     console.log(queryObj)
@@ -71,8 +84,17 @@ const ListPage = () => {
         <div>
             {/* queryobj를 전달 해준다.  */}
             Board List
-            <ListSearchComponent queryObj={queryObj} moveSearch={moveSearch} chageSize={chageSize}></ListSearchComponent>
-            <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
+            <ListSearchComponent 
+            queryObj={queryObj} 
+            moveSearch={moveSearch} 
+            chageSize={chageSize}>
+
+            </ListSearchComponent>
+            <ListComponent 
+            queryObj={queryObj} 
+            movePage={movePage} 
+            moveRead={moveRead}
+            ></ListComponent>
         </div>
     );
 }
