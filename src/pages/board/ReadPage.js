@@ -1,14 +1,19 @@
 import { useParams } from "react-router-dom";
+import useQueryObj from "../../hooks/useQueryObj";
 
 const ReadPage = () => {
 
+    const {queryObj,setSearch,moveList,moveRead} = useQueryObj()
     const {bno} = useParams()
-
+    
+    
     console.log(bno)
+    console.log(queryObj)
 
     return (  
         <div>
             Board Read  Page
+            <button onClick={e => moveList()}> List</button>
         </div>
     );
 }
