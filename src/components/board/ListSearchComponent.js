@@ -16,6 +16,12 @@ const ListSearchComponent = ({ queryObj, moveSearch, changeSize }) => {
         setChSize({ ...chSize })
     }, [queryObj])
 
+    const handleSize = (e) => {
+        chSize.size = e.target.value
+        changeSize(chSize.size)
+    }
+
+    console.log(chSize.size)
     return (
         <div className="m-2 p-4 bg-blue-300 border-2 ">
             <select className="boarder-1 m-2 p-2"
@@ -50,7 +56,7 @@ const ListSearchComponent = ({ queryObj, moveSearch, changeSize }) => {
 
             <select className="boarder-1 m-2 p-2"
                 value={chSize.size}
-                onChange={e => changeSize(chSize.size)}
+                onChange={e => handleSize(e) }
             >
                 <option value={5}>5</option>
                 <option value={10}>10</option>

@@ -37,8 +37,8 @@ const ListPage = () => {
 
 
 
-    const chageSize = (size) =>{
-        queryObj.page = 1 
+    const changeSize = (size) =>{
+
         queryObj.size = size
 
         setSearch({...queryObj})
@@ -56,7 +56,7 @@ const ListPage = () => {
             <ListSearchComponent 
             queryObj={queryObj} 
             moveSearch={moveSearch} 
-            chageSize={chageSize}>
+            changeSize={changeSize}>
 
             </ListSearchComponent>
             <ListComponent 

@@ -3,7 +3,7 @@ import useQueryObj from "../../hooks/useQueryObj";
 
 const ReadPage = () => {
 
-    const {queryObj,setSearch,moveList,moveRead} = useQueryObj()
+    const {queryObj,moveList} = useQueryObj()
     const {bno} = useParams()
     
     

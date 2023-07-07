@@ -2,8 +2,7 @@ import { createBrowserRouter } from"react-router-dom";
 
 import MainPage from "../pages/MainPage";
 import AboutPage from "../pages/AboutPage";
-import ListPage from "../pages/board/ListPage";
-import IndexPage from "../pages/board/IndexPage";
+
 // Code Splitting  시작
 import { Suspense, lazy } from "react";
 import LoadingPage from "../pages/LoadingPage";
