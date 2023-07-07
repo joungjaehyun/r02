@@ -4,6 +4,8 @@
 import { useEffect, useState } from "react";
 import { createSearchParams } from "react-router-dom";
 import { getList } from "../../api/boardAPI";
+import ListPageComponent from "../common/ListPageComponent";
+
 
 const initState = {
     dtoList:[],
@@ -33,13 +35,12 @@ const ListComponent = ({queryObj,movePage}) => {
 
     },[queryObj])
 
-    const handleClickPage = (pageNum) =>{
-        movePage(pageNum)
-    }
-    
+  
     return (  
         <div>
             <div>List Component</div>
+            {/* QueryObj는 필요함 search type keyword가 들어가야되기떄문 */}
+
             <div>
                 <ul >
                     {listData.dtoList.map(
@@ -47,22 +48,7 @@ const ListComponent = ({queryObj,movePage}) => {
                     - [{replyCount}]</li>)}
                 </ul>
             </div>
-            <div className="m-4 p-2">
-                {/* 페이지클릭시 movePage 호출이 되는지 || 파라미터 갯수들이 얼마나 필요한지  */}
-                <ul className="flex">
-                    {listData.prev ? <li className="m-2 p-2 bg-blue-500 border-2 text-white font-bold rounded-lg"
-                    onClick={()=> handleClickPage(listData.start-1)}
-                    >PREV</li>:<></>}
-                    {listData.pageNums.map(num => <li 
-                    className="m-2 p-2 bg-blue-500 border-2 text-white font-bold rounded-lg"
-                      key={num}
-                      onClick={()=>handleClickPage(num)}
-                      >{num}</li>)}
-                    {listData.next ? <li className="m-2 p-2 bg-blue-500 border-2 text-white font-bold rounded-lg"
-                    onClick={()=> handleClickPage(listData.end+1)}
-                    >NEXT</li>:<></>}     
-                </ul>
-            </div>
+            <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
         </div>
     );
 }

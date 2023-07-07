@@ -1,5 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import ListComponent from "../../components/board/ListComponent";
+import ListSearchComponent from "../../components/board/ListSearchComponent";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 
 const checkNull = (obj) => {
@@ -47,11 +49,29 @@ const ListPage = () => {
         queryObj.page = num
         setSearch({ ...queryObj })
     }
+    // 검색시 이동하는 함수
+    const moveSearch = (type, keyword) => {
+        queryObj.page = 1
+        queryObj.type = type
+        queryObj.keyword = keyword
+
+        setSearch({ ...queryObj })
+    }
+    const chageSize = (size) =>{
+    
+        queryObj.size = size
+
+        setSearch({...queryObj})
+    }
+
+    console.log("SearchComponent----------------------------")
+    console.log(queryObj)
 
     return (
         <div>
             {/* queryobj를 전달 해준다.  */}
             Board List
+            <ListSearchComponent queryObj={queryObj} moveSearch={moveSearch} chageSize={chageSize}></ListSearchComponent>
             <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
         </div>
     );
