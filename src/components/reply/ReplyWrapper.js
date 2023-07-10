@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReplyList from "./ReplyList";
 import ReplyInput from "./ReplyInput";
+import ReplyRead from "./ReplyRead";
 
 // 상태값 초기화
 const initState = {
@@ -8,7 +9,9 @@ const initState = {
     page: 1,
     last: false,
     // 상태를 계속 바꾸게하기 위한 변수
-    refresh: false
+    refresh: false,
+    // read값의 cmd 작업을 위한 변수
+    current:0
 }
 
 // bno 1개가 propertities로 내려온다
@@ -44,11 +47,22 @@ const ReplyWrapper = ({bno}) => {
         data.refresh = !data.refresh
         setData({...data})
     }
+
+    const changeCurrent = (rno) =>{
+        data.current = rno
+        setData({...data})
+    }
+    const cancelRead = () =>{
+        data.current= 0 
+        setData({...data})
+    }
    
     return (  
         <div>
             <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
-            <ReplyList {...data} movePage={movePage}></ReplyList>
+            {/*  current값을 기준으로 삼항연산자 처리 */}
+            {data.current!== 0 ? <ReplyRead rno={data.current} cancelRead={cancelRead}></ReplyRead>:<></>}
+            <ReplyList {...data} movePage={movePage} changeCurrent={changeCurrent}></ReplyList>
         </div>
     );
 }
