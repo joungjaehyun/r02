@@ -57,8 +57,11 @@ const ReplyWrapper = ({bno}) => {
         setData({...data})
     }
     // 강제 리로딩 함수
-    const refreshPage = () =>{
+    const refreshPage = (hide) =>{
         data.refresh =  !data.refresh
+        if(hide){
+            data.current = 0
+        }
         setData({...data})
     }
    

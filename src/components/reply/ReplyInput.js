@@ -11,7 +11,7 @@ const initState = {
 
 const ReplyInput = ({ bno,refreshLast }) => {
 
-    const [reply, setReply] = useState(initState)
+    const [reply, setReply] = useState({...initState})
 
     const handleChange = (e) => {
 

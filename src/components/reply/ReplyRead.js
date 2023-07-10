@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteReply, getReply } from "../../api/repliesAPI";
+import { deleteReply, getReply, putReply } from "../../api/repliesAPI";
 
 const initState = {
     rno: 0,
@@ -30,8 +30,26 @@ const ReplyRead = ({rno,cancelRead,refreshPage}) => {
 
         deleteReply(rno).then(data =>{
             alert(`${data.result}번 댓글이 삭제되었습니다.`)
-            refreshPage()
+            refreshPage(true)
         })
+    }
+    const handleChange = (e) =>{
+
+        reply[e.target.name] = e.target.value
+        setReply({...reply})
+        
+    }
+
+    const handleClickModify= () =>{
+
+        putReply(reply).then ( data =>{
+            alert(`${data.result}번 댓글이 수정되었습니다.`)
+            refreshPage(true)
+        })
+    }
+
+    if(reply.replyText === '해당 글은 삭제 되었습니다.'){
+        return <></>
     }
 
     
@@ -41,12 +59,19 @@ const ReplyRead = ({rno,cancelRead,refreshPage}) => {
 
             <div>
                 <div>{rno}</div>
-                <div>{reply.replyText}</div>
+                <div>
+                    <input 
+                    type="text" 
+                    name="replyText" 
+                    onChange={handleChange} 
+                    value={reply.replyText}>
+                    </input>
+                    </div>
                 <div>{reply.replyer}</div>
             </div>
 
             <div>
-                <button>MODIFY</button>
+                <button onClick={handleClickModify}>MODIFY</button>
                 <button onClick={handleClickDelete}>DELETE</button>
                 <button onClick={cancelRead}>CANCEL</button>
             </div>
