@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import BasicLayout from "../../layouts/BasicLayout";
 
 
@@ -6,7 +6,7 @@ const IndexPage = () => {
     return ( 
         <BasicLayout>
             <div className="mt-4 p-4 bg-gradient-to-l bg-green-400 text-2xl text-white flex justify-center">
-                <div className="underline font-extrabold m-2 p-2">List</div>
+            <Link to="/board/list">    <div className="underline font-extrabold m-2 p-2">List</div> </Link>
                 <div className="underline font-extrabold m-2 p-2">Register</div>
                 
             </div>

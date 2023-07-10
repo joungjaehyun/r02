@@ -56,12 +56,20 @@ const ReplyWrapper = ({bno}) => {
         data.current= 0 
         setData({...data})
     }
+    // 강제 리로딩 함수
+    const refreshPage = () =>{
+        data.refresh =  !data.refresh
+        setData({...data})
+    }
    
     return (  
         <div>
             <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
             {/*  current값을 기준으로 삼항연산자 처리 */}
-            {data.current!== 0 ? <ReplyRead rno={data.current} cancelRead={cancelRead}></ReplyRead>:<></>}
+            {data.current!== 0 ? <ReplyRead 
+            rno={data.current} 
+            refreshPage={refreshPage} 
+            cancelRead={cancelRead}></ReplyRead>:<></>}
             <ReplyList {...data} movePage={movePage} changeCurrent={changeCurrent}></ReplyList>
         </div>
     );

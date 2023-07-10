@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getReply } from "../../api/repliesAPI";
+import { deleteReply, getReply } from "../../api/repliesAPI";
 
 const initState = {
     rno: 0,
@@ -10,7 +10,7 @@ const initState = {
 }
 
 
-const ReplyRead = ({rno,cancelRead}) => {
+const ReplyRead = ({rno,cancelRead,refreshPage}) => {
     
     console.log("ReplyRead............... " + rno)
 
@@ -26,6 +26,14 @@ const ReplyRead = ({rno,cancelRead}) => {
 
     },[rno])
 
+    const handleClickDelete =  () =>{
+
+        deleteReply(rno).then(data =>{
+            alert(`${data.result}번 댓글이 삭제되었습니다.`)
+            refreshPage()
+        })
+    }
+
     
     return (  
         <div className="m-8 bg-blue-200 border-4 ">
@@ -39,7 +47,7 @@ const ReplyRead = ({rno,cancelRead}) => {
 
             <div>
                 <button>MODIFY</button>
-                <button>DELETE</button>
+                <button onClick={handleClickDelete}>DELETE</button>
                 <button onClick={cancelRead}>CANCEL</button>
             </div>
         
