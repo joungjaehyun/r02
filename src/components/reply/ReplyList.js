@@ -18,7 +18,7 @@ const initState = {
 
 
 
-const ReplyList = ({ bno, page, last, movePage }) => {
+const ReplyList = ({ bno, page, last, refresh, movePage }) => {
 
     console.log("Reply List...bno: " + bno)
 
@@ -32,7 +32,7 @@ const ReplyList = ({ bno, page, last, movePage }) => {
             setListData(data)
         })
 
-    }, [bno,page, last])
+    }, [bno,page, last, refresh])
 
 
     return (

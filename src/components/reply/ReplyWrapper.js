@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import ReplyList from "./ReplyList";
+import ReplyInput from "./ReplyInput";
 
 // 상태값 초기화
 const initState = {
     bno: 0,
     page: 1,
-    last: false
+    last: false,
+    // 상태를 계속 바꾸게하기 위한 변수
+    refresh: false
 }
 
 // bno 1개가 propertities로 내려온다
@@ -31,12 +34,20 @@ const ReplyWrapper = ({bno}) => {
         data.page = num
         // 변경이 안된다. why? last가 true값으로 고정되있기때문에 last를 false로 변경해 줘야된다.
         data.last = false
+        data.refresh = ! data.refresh
+        setData({...data})
+    }
+    
+    const refreshLast = () =>{
+        
+        data.last =true
+        data.refresh = !data.refresh
         setData({...data})
     }
    
     return (  
         <div>
-
+            <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
             <ReplyList {...data} movePage={movePage}></ReplyList>
         </div>
     );
