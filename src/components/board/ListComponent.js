@@ -44,10 +44,10 @@ const ListComponent = ({queryObj,movePage, moveRead}) => {
             <div>
                 <ul >
                     {listData.dtoList.map(
-                     ({bno,title,replyCount})   => <li key={bno}
+                     ({bno,title,replyCount,regDate})   => <li key={bno}
                      onClick={()=> moveRead(bno)}
                      >{bno} - {title}
-                    - [{replyCount}]</li>)}
+                    - [{replyCount}]- {regDate}</li>)}
                 </ul>
             </div>
             <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
